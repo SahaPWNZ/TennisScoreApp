@@ -3,31 +3,28 @@ import com.sahapwnz.tennisscoreapp.entity.Player;
 import com.sahapwnz.tennisscoreapp.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import util.TestDataImporter;
 
 public class testDataBaseRunner {
+    private static final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    @BeforeAll
+    public static void initDB(){
+        TestDataImporter.importData(sessionFactory);
+    }
+    @AfterAll
+    public static void finish(){
+        sessionFactory.close();
+    }
     @Test
     public void testConnectionDB() {
-        try (SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-             Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
-            var player1 = Player.builder()
-                    .name("Vasiliy")
-                    .build();
-            var player2 = Player.builder()
-                    .name("Sany")
-                    .build();
-            session.persist(player1);
-            session.persist(player2);
-            var match = Match.builder()
-                    .player1(player1)
-                    .player2(player2)
-                    .winnerPlayer(player1)
-                    .build();
-            session.persist(match);
-            System.out.println(match);
-            System.out.println(player1);
-            System.out.println(player2);
+
+            System.out.println(session.get(Player.class, 1));
+            System.out.println(session.get(Match.class, 1));
             session.getTransaction().commit();
         }
     }
