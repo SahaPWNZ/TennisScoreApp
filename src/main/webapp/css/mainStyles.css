@@ -7,46 +7,55 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
 }
-.top-block{
 
-    height: 30%;
-    border-width: 10px;
-    border-style: solid;
-    border-color: green;
-    font-size: 0;
-}
 .block-with-button{
-    height: 65%;
-    border-width: 10px;
-    border-style: solid;
-    border-color: red;
+    height: 60%;
+    border-width: 50px;
 }
 .button-block{
-width: 100%;
-    border-width: 5px;
-    border-style: solid;
-    border-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
     box-sizing: border-box; /* Включаем размер границы в общий размер элемента */
-    font-size: 16px;
 }
-.top-block2 {
-    display: inline-block;
-    height: 100%;
-    border-width: 5px;
-    border-style: solid;
-    border-color: blue;
-    box-sizing: border-box; /* Включаем размер границы в общий размер элемента */
-    font-size: 16px;
+button {
+    font-size: 1.5rem; /* Размер шрифта */
+    padding: 2rem 3rem;
+    border: none;
+    border-radius: 15px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
 }
-.left-block{
-    width: 30%;
- }
- .right-block{
-     width: 70%;
- }
- .logo{
-     width: 30px;
-     height: 30px;
+.bt {
+    font-family: "Open Sans", sans-serif;
+}
+.top-block {
+    height: 20%;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
 
- }
+
+.block-footer {
+    align-items: center;
+    width: 15%;
+    border-width: 2px;
+    box-sizing: border-box;
+    margin-left: 20px;
+}
+
+.top-block-with-title {
+    margin: 0px auto;
+}
+.project-title {
+    text-align: center;
+    font-size: 2rem; /* Размер шрифта */
+    color: #adfc03; /* Цвет шрифта */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Тень для глубины */
+}

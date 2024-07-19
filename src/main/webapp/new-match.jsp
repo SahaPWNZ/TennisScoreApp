@@ -1,16 +1,49 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>JSP - Hello World123 test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Начало матча</title>
+    <link rel="stylesheet" href="css/12345.css">
 </head>
 <body>
-    <p>2 + 2 = <%= 2 + 2 %> test jsp</p>
-    <p>5 > 2 = <%= 5 > 2 %></p>
-    <p><%= new String("Hello").toUpperCase() %></p>
-    <p>Today <%= new java.util.Date() %></p>
-    <h1><%= "Hello World!" %></h1>
-    <br/>
-    <a href="main.jsp">Hello Servlet</a>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Домашняя страница</a></li>
+            <li><a href="#">Все матчи</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1 class="page-title">Начало матча</h1>
+
+    <div class="form-container">
+        <div class="form-player">
+            <h2>Игрок 1</h2>
+            <input type="text" placeholder="Введите имя игрока">
+        </div>
+
+        <div class="form-player">
+            <h2>Игрок 2</h2>
+            <input type="text" placeholder="Введите имя игрока">
+        </div>
+    </div>
+
+    <button class="start-match">Начать матч</button>
+</main>
+
+<footer>
+    <div class="footer-links">
+        <a href="#">
+            <img src="logo1.png" alt="Логотип 1">
+        </a>
+        <a href="#">
+            <img src="logo2.png" alt="Логотип 2">
+        </a>
+    </div>
+</footer>
 </body>
 </html>
