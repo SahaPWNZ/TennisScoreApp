@@ -7,7 +7,12 @@
 </head>
 <body>
     <div class="top-block">
-        <div class="top-block2 left-block">Блок1 с гитоми тг</div>
+        <div class="top-block2 left-block">
+            <div class="logo-block">
+                <a ><img class="logo"  src="css/resources/free-icon-telegram-2111646.png"></a>
+                <a ><img  class="logo" src="css/resources/free-icon-git-logo-52040.png"></a>
+            </div>
+        </div>
         <div class="top-block2 right-block">Блок2 с названием проекта</div>
     </div>
     <div class="block-with-button">

@@ -9,6 +9,7 @@ body{
     background-attachment: fixed;
 }
 .top-block{
+
     height: 30%;
     border-width: 10px;
     border-style: solid;
@@ -43,4 +44,9 @@ width: 100%;
  }
  .right-block{
      width: 70%;
+ }
+ .logo{
+     width: 30px;
+     height: 30px;
+
  }
