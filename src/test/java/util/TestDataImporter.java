@@ -11,8 +11,8 @@ public class TestDataImporter {
     public static void importData(SessionFactory sessionFactory) {
         @Cleanup Session session = sessionFactory.openSession();
         session.beginTransaction();
-        var player1 = Player.builder().name("Vasiliy").build();
-        var player2 = Player.builder().name("Sany").build();
+        var player1 = Player.builder().name("TEST").build();
+        var player2 = Player.builder().name("TEST2").build();
         var player3 = Player.builder().name("Vlad").build();
         var player4 = Player.builder().name("Nikita").build();
 
