@@ -1,4 +1,4 @@
-package com.sahapwnz.tennisscoreapp;
+package com.sahapwnz.tennisscoreapp.servlets;
 
 import java.io.*;
 

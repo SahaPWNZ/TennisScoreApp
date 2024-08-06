@@ -1,40 +1,39 @@
 package com.sahapwnz.tennisscoreapp.dao;
 
 import com.sahapwnz.tennisscoreapp.entity.Match;
-import com.sahapwnz.tennisscoreapp.util.HibernateUtil;
-import org.hibernate.SessionBuilder;
-import org.hibernate.SessionFactory;
+import com.sahapwnz.tennisscoreapp.entity.Player;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 import java.util.Optional;
 
-public class MatchDAO extends BaseDAO<Match> {
-    public MatchDAO(SessionFactory sessionFactory) {
-        super(sessionFactory);
-    }
-
-    public MatchDAO() {
+public class PlayerDAO extends BaseDAO<Player> {
+    public PlayerDAO() {
         super();
     }
 
+    public PlayerDAO(SessionFactory sessionFactory) {
+        super(sessionFactory);
+    }
+
     @Override
-    public List<Match> findAll() {
+    public List<Player> findAll() {
         try (Session session = sessionFactory.openSession()) {
-            return session.createQuery("select m from Match m", Match.class).list();
+            return session.createQuery("select p from Player p", Player.class).list();
 
         }
     }
 
     @Override
-    public Optional<Match> findById(Long id) {
+    public Optional<Player> findById(Long id) {
         try (Session session = sessionFactory.openSession()) {
-            return Optional.ofNullable(session.get(Match.class, id));
+            return Optional.ofNullable(session.get(Player.class, id));
         }
     }
 
     @Override
-    public Match save(Match entity) {
+    public Player save(Player entity) {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
 
@@ -47,7 +46,7 @@ public class MatchDAO extends BaseDAO<Match> {
     }
 
 //    @Override
-//    public void update(Match entity) {
+//    public void update(Player entity) {
 //        try (Session session = sessionFactory.openSession()) {
 //            session.beginTransaction();
 //
@@ -62,7 +61,7 @@ public class MatchDAO extends BaseDAO<Match> {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
 
-            Match match = session.get(Match.class, id);
+            Player match = session.get(Player.class, id);
             if (match != null) {
                 session.remove(match);
             }
