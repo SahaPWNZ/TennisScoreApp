@@ -3,6 +3,8 @@ import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
 import com.sahapwnz.tennisscoreapp.service.MatchScoreCalculationService;
 import org.junit.jupiter.api.*;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestService {
 
@@ -17,37 +19,45 @@ public class TestService {
         System.out.println("--------------------------------------------------");
     }
 
+    @BeforeEach
+    public void clearAllPlayerPoints() {
+        player1.setPoint(0);
+        player1.setGame(0);
+        player1.setSet(0);
+        player2.setPoint(0);
+        player2.setGame(0);
+        player2.setSet(0);
+    }
+
     @Test
 //@Order(1)
-    public void checkMatchScoreCalculationService1() {
+    public void checkMatchScoreCalculationService() {
+        player1.setPoint(3);
+        player1.setGame(5);
+        calculationService.winOnePoint(matchScoreDTO, 1L);
+        assertEquals(player1.getSet(), 1);
+    }
+    @Test
+    public void checkTieBreakMatchScoreCalculationService() {
+        player1.setGame(6);
+        player2.setGame(5);
+        player2.setPoint(4);
+        printTennisScore();
+        calculationService.winOnePoint(matchScoreDTO, 2L);
+        printTennisScore();
+        assertEquals(player1.getSet(), 0);
+        player1.setPoint(4);
         calculationService.winOnePoint(matchScoreDTO, 1L);
         printTennisScore();
+        player2.setPoint(4);
         calculationService.winOnePoint(matchScoreDTO, 2L);
         printTennisScore();
+        player1.setPoint(4);
         calculationService.winOnePoint(matchScoreDTO, 1L);
         printTennisScore();
+        player1.setPoint(4);
         calculationService.winOnePoint(matchScoreDTO, 1L);
         printTennisScore();
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        printTennisScore();
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        printTennisScore();
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        printTennisScore();
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        printTennisScore();
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        printTennisScore();
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        printTennisScore();
-
-        for (int i = 0; i < 20; i++) {
-            calculationService.winOnePoint(matchScoreDTO, 1L);
-            printTennisScore();
-            calculationService.winOnePoint(matchScoreDTO, 2L);
-            printTennisScore();
-            calculationService.winOnePoint(matchScoreDTO, 2L);
-            printTennisScore();
-        }
+        assertEquals(player1.getSet(), 1);
     }
 }

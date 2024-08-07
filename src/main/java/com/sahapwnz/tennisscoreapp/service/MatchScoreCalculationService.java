@@ -15,58 +15,60 @@ public class MatchScoreCalculationService {
     }
 
     public void winOnePoint(MatchScoreDTO matchScoreDTO, Long id) {
-        PlayerScoreDTO playerWithPointDTO = matchScoreDTO.getPlayerScoreDTOonId(id);
-        playerWithPointDTO.wonPoint();
-        checkWonGame(playerWithPointDTO, matchScoreDTO.getOponnentPlayerScoreDTO(playerWithPointDTO));
+        PlayerScoreDTO playerWinner = matchScoreDTO.getPlayerScoreDTOonId(id);
+        playerWinner.wonPoint();
+        checkGame(playerWinner, matchScoreDTO.getOponnentPlayerScoreDTO(playerWinner));
     }
 
 
-    public void checkWonGame(PlayerScoreDTO playerWithPointDTO, PlayerScoreDTO player2DTO) {
-        if (playerWithPointDTO.getGame() == 6 && player2DTO.getGame() == 6) {
+    private void checkGame(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
+        if (playerWinner.getGame() == 6 && opponent.getGame() == 6) {
 
-            playTieBreak(playerWithPointDTO, player2DTO);
+            playTieBreak(playerWinner, opponent);
 
-        } else if (playerWithPointDTO.getPoint() >= 4 && player2DTO.getPoint() >= 4) {
-            if (playerWithPointDTO.getPoint() - player2DTO.getPoint() == 2) {
+        } else if (playerWinner.getPoint() >= 4 && opponent.getPoint() >= 4) {
+            if (playerWinner.getPoint() - opponent.getPoint() == 2) {
 
-                playerWithPointDTO.wonGame();
-                clearPlayersPoints(playerWithPointDTO, player2DTO);
-                checkWonSet(playerWithPointDTO, player2DTO);
+                playerWinner.wonGame();
+                clearPlayersPoints(playerWinner, opponent);
+                checkSet(playerWinner, opponent);
             }
-        } else if (playerWithPointDTO.getPoint() == 4 && player2DTO.getPoint() < 3) {
+        } else if (playerWinner.getPoint() == 4 && opponent.getPoint() < 3) {
 
-            playerWithPointDTO.wonGame();
-            clearPlayersPoints(playerWithPointDTO, player2DTO);
-            checkWonSet(playerWithPointDTO, player2DTO);
+            playerWinner.wonGame();
+            clearPlayersPoints(playerWinner, opponent);
+            checkSet(playerWinner, opponent);
 //
         }
     }
 
-    public void checkWonSet(PlayerScoreDTO playerWithPointDTO, PlayerScoreDTO player2DTO) {
-        if (playerWithPointDTO.getGame() == 6 && player2DTO.getGame() <= 4) {
-            playerWithPointDTO.wonSet();
-            clearPlayersPoints(playerWithPointDTO, player2DTO);
-            clearPlayersGames(playerWithPointDTO, player2DTO);
-//            checkWonMatch(matchScoreDTO.getPlayer1());
+    private void checkSet(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
+        if (playerWinner.getGame() == 6 && opponent.getGame() <= 4) {
+            playerWinner.wonSet();
+            clearPlayersPoints(playerWinner, opponent);
+            clearPlayersGames(playerWinner, opponent);
+            checkWinnerMatch(playerWinner);
         }
     }
 
-    public void playTieBreak(PlayerScoreDTO playerWithPointDTO, PlayerScoreDTO player2DTO) {
-        if (playerWithPointDTO.getPoint() >= 6 && (playerWithPointDTO.getPoint() - player2DTO.getPoint()) >= 2) {
-            playerWithPointDTO.wonSet();
-            clearPlayersPoints(playerWithPointDTO, player2DTO);
-            clearPlayersGames(playerWithPointDTO, player2DTO);
-            //            checkWonMatch(matchScoreDTO.getPlayer1());
+    private void playTieBreak(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
+        if (playerWinner.getPoint() >= 6 && (playerWinner.getPoint() - opponent.getPoint()) >= 2) {
+            playerWinner.wonSet();
+            clearPlayersPoints(playerWinner, opponent);
+            clearPlayersGames(playerWinner, opponent);
+            checkWinnerMatch(playerWinner);
+        }
+        else {
+            playerWinner.wonGame();
+            clearPlayersPoints(playerWinner, opponent);
         }
     }
-//
-//    public void checkWonMatch(PlayerScoreDTO playerScoreDTO) {
-//        if (playerScoreDTO.getSet() == 2) {
-//            System.out.println("Игрок с id: " + playerScoreDTO.getId() + " ПОбедил");//вызов метода о завершении матча
-//        }
-//    }
-//    public void winOneGame(PlayerScoreDTO){
-//
-//    }
+
+    private void checkWinnerMatch(PlayerScoreDTO playerWinner) {
+        if (playerWinner.getSet() == 2) {
+            System.out.println("Игрок с id: " + playerWinner.getId() + " ПОбедил");//вызов метода о завершении матча
+        }
+    }
+
 }
 
