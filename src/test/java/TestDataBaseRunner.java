@@ -2,10 +2,6 @@ import com.sahapwnz.tennisscoreapp.dao.MatchDAO;
 import com.sahapwnz.tennisscoreapp.dao.PlayerDAO;
 import com.sahapwnz.tennisscoreapp.entity.Match;
 import com.sahapwnz.tennisscoreapp.entity.Player;
-import com.sahapwnz.tennisscoreapp.util.HibernateUtil;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -23,7 +19,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class testDataBaseRunner {
+public class TestDataBaseRunner {
     private static final SessionFactory sessionFactory = new Configuration()
             .addAnnotatedClass(Player.class)
             .addAnnotatedClass(Match.class)
