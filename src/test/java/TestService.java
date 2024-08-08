@@ -31,33 +31,49 @@ public class TestService {
 
     @Test
 //@Order(1)
+    @DisplayName("Игрок первый забирает Победу в сете при стартовом счёте 5-0 по геймам")
     public void checkMatchScoreCalculationService() {
         player1.setPoint(3);
         player1.setGame(5);
         calculationService.winOnePoint(matchScoreDTO, 1L);
+
         assertEquals(player1.getSet(), 1);
     }
+
     @Test
+    @DisplayName("Проверка работы метода тайбрейка при счёте по геймам 6-6 ")
     public void checkTieBreakMatchScoreCalculationService() {
+
         player1.setGame(6);
+        player1.setSet(1);
         player2.setGame(5);
-        player2.setPoint(4);
-        printTennisScore();
+        player2.setPoint(3);
         calculationService.winOnePoint(matchScoreDTO, 2L);
-        printTennisScore();
-        assertEquals(player1.getSet(), 0);
-        player1.setPoint(4);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        printTennisScore();
-        player2.setPoint(4);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        printTennisScore();
-        player1.setPoint(4);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        printTennisScore();
-        player1.setPoint(4);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        printTennisScore();
+
         assertEquals(player1.getSet(), 1);
+        player1.setPoint(4);
+        calculationService.winOnePoint(matchScoreDTO, 1L);
+        calculationService.winOnePoint(matchScoreDTO, 1L);
+        calculationService.winOnePoint(matchScoreDTO, 1L);
+        calculationService.winOnePoint(matchScoreDTO, 2L);
+
+        assertEquals(player1.getSet(), 2);
+    }
+
+    @Test
+    @DisplayName("Проверка подсчёта очков игроков при равенстве очков 4-4")
+    public void checkMoreORLessPoints() {
+        player1.setPoint(2);
+        player2.setPoint(2);
+        calculationService.winOnePoint(matchScoreDTO, 1L);
+        calculationService.winOnePoint(matchScoreDTO, 2L);
+        calculationService.winOnePoint(matchScoreDTO, 1L);
+        calculationService.winOnePoint(matchScoreDTO, 2L);
+        calculationService.winOnePoint(matchScoreDTO, 1L);
+        calculationService.winOnePoint(matchScoreDTO, 2L);
+        calculationService.winOnePoint(matchScoreDTO, 2L);
+        calculationService.winOnePoint(matchScoreDTO, 2L);
+
+        assertEquals(player2.getGame(), 1);
     }
 }

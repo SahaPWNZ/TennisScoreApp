@@ -52,16 +52,16 @@ public class MatchScoreCalculationService {
     }
 
     private void playTieBreak(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
-        if (playerWinner.getPoint() >= 6 && (playerWinner.getPoint() - opponent.getPoint()) >= 2) {
+        if (playerWinner.getPoint() >= 7 && (playerWinner.getPoint() - opponent.getPoint()) >= 2) {
             playerWinner.wonSet();
             clearPlayersPoints(playerWinner, opponent);
             clearPlayersGames(playerWinner, opponent);
             checkWinnerMatch(playerWinner);
         }
-        else {
-            playerWinner.wonGame();
-            clearPlayersPoints(playerWinner, opponent);
-        }
+//        else {
+//            playerWinner.wonGame();
+//            clearPlayersPoints(playerWinner, opponent);
+//        }
     }
 
     private void checkWinnerMatch(PlayerScoreDTO playerWinner) {

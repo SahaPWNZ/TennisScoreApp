@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PlayerScoreDTO {
+    private String name;
     private Long id;
     private int point = 0;
     private int game = 0;
@@ -16,6 +17,17 @@ public class PlayerScoreDTO {
 
     public PlayerScoreDTO(Long id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "PlayerScoreDTO{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", point=" + point +
+                ", game=" + game +
+                ", set=" + set +
+                '}';
     }
 
     public void wonPoint(){

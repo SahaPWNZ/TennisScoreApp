@@ -15,18 +15,6 @@ import java.util.Objects;
 @Builder
 @Table(name = "matches")
 public class Match {
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Match match = (Match) o;
-        return Objects.equals(id, match.id) && Objects.equals(player1, match.player1) && Objects.equals(player2, match.player2) && Objects.equals(winnerPlayer, match.winnerPlayer);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, player1, player2, winnerPlayer);
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,4 +31,17 @@ public class Match {
     @ManyToOne
     @JoinColumn(name = "winner_player_id")
     private Player winnerPlayer;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Match match = (Match) o;
+        return Objects.equals(id, match.id) && Objects.equals(player1, match.player1) && Objects.equals(player2, match.player2) && Objects.equals(winnerPlayer, match.winnerPlayer);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, player1, player2, winnerPlayer);
+    }
 }

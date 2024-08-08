@@ -12,9 +12,11 @@ public class OngoingMatchesService {
     protected static final HashMap<UUID, MatchScoreDTO> mapMatchScore = new HashMap<>();
 
 
+
     //принимает 2 пустых ДТО player и добавляет новый матчScore в мапу, нужно проверять есть ли
     //матч с такими игроками в мапе
     public void addNewMatchScoreDTO(PlayerScoreDTO player1, PlayerScoreDTO player2){
+
     }
     //удаляем матч с мапы
     public void removeMatchScoreDTO(UUID uuid){
