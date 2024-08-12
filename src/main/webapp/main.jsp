@@ -19,7 +19,7 @@
 
 <div class="block-with-button">
     <div class="button-block">
-        <a href="new-match.jsp">
+        <a href="new-match">
             <button class = "bt" >Начать новый матч</button>
         </a>
     </div>

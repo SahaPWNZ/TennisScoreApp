@@ -32,6 +32,15 @@ public class PlayerDAO extends BaseDAO<Player> {
         }
     }
 
+    public Optional<Player> findByName(String name){
+        try(Session session = sessionFactory.openSession()){
+
+            return Optional.ofNullable(session.createQuery("select p from Player p where p.name =:name", Player.class)
+                    .setParameter("name", name)
+                    .uniqueResult());
+        }
+    }
+
     @Override
     public Player save(Player entity) {
         try (Session session = sessionFactory.openSession()) {

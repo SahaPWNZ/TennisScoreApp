@@ -1,6 +1,7 @@
 package com.sahapwnz.tennisscoreapp.util;
 
 import com.sahapwnz.tennisscoreapp.dto.MatchScoreDTO;
+import com.sahapwnz.tennisscoreapp.dto.PlayerRequestDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
 import com.sahapwnz.tennisscoreapp.entity.Match;
 import com.sahapwnz.tennisscoreapp.entity.Player;
@@ -39,6 +40,9 @@ public class MappingUtil {
         return Match.builder().player1(player1).player2(player2).winnerPlayer(winner).build();
 
 
+    }
+    public static Player convertToEntityPlayer(PlayerRequestDTO playerRequestDTO){
+        return MODEL_MAPPER.map(playerRequestDTO, Player.class);
     }
 
 

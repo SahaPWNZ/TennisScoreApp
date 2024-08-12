@@ -1,14 +1,15 @@
 package com.sahapwnz.tennisscoreapp.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.Objects;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
+@Builder
 public class MatchScoreDTO {
 private PlayerScoreDTO player1;
 private PlayerScoreDTO player2;
@@ -30,4 +31,17 @@ public PlayerScoreDTO getOponnentPlayerScoreDTO(PlayerScoreDTO player){
         return player2;
     }
 }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MatchScoreDTO that = (MatchScoreDTO) o;
+        return Objects.equals(player1.getName(), that.player1.getName()) && Objects.equals(player2.getName(), that.player2.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(player1.getName(), player2.getName());
+    }
 }

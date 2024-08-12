@@ -1,12 +1,14 @@
 import com.sahapwnz.tennisscoreapp.dto.MatchScoreDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
 import com.sahapwnz.tennisscoreapp.service.MatchScoreCalculationService;
+import com.sahapwnz.tennisscoreapp.service.OngoingMatchesService;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestService {
+    static private OngoingMatchesService ongoingMatchesService = new OngoingMatchesService();
 
     static private MatchScoreCalculationService calculationService = new MatchScoreCalculationService();
     static private PlayerScoreDTO player1 = new PlayerScoreDTO(1L);
@@ -76,4 +78,6 @@ public class TestService {
 
         assertEquals(player2.getGame(), 1);
     }
+
+
 }

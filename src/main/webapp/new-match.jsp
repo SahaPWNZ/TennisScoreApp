@@ -21,18 +21,23 @@
     <h1 class="page-title">Начало матча</h1>
 
     <div class="form-container">
-        <div class="form-player">
-            <h2>Игрок 1</h2>
-            <input type="text" placeholder="Введите имя игрока">
-        </div>
+        <form method="post" action="new-match">
+            <div class="form-player">
+                <h2>Игрок 1</h2>
+                <input type="text" placeholder="Введите имя игрока"
+                       id="playerOne" name="playerOne">>
+            </div>
 
-        <div class="form-player">
-            <h2>Игрок 2</h2>
-            <input type="text" placeholder="Введите имя игрока">
-        </div>
+            <div class="form-player">
+                <h2>Игрок 2</h2>
+                <input type="text" placeholder="Введите имя игрока"
+                       id="playerTwo" name="playerTwo">
+            </div>
+            <button class="start-match" type="submit">Начать матч</button>
+        </form>
     </div>
 
-    <button class="start-match">Начать матч</button>
+
 </main>
 
 <footer>

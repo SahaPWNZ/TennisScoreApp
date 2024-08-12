@@ -1,28 +1,54 @@
 package com.sahapwnz.tennisscoreapp.service;
 
 import com.sahapwnz.tennisscoreapp.dto.MatchScoreDTO;
+import com.sahapwnz.tennisscoreapp.dto.PlayerRequestDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
+import com.sahapwnz.tennisscoreapp.entity.Player;
+import com.sahapwnz.tennisscoreapp.util.MappingUtil;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 
 public class OngoingMatchesService {
 
 
-    protected static final HashMap<UUID, MatchScoreDTO> mapMatchScore = new HashMap<>();
+    public static final HashMap<UUID, MatchScoreDTO> mapMatchScore = new HashMap<>();
 
+    public UUID addNewMatchScoreDTO(PlayerRequestDTO player1DTO, PlayerRequestDTO player2DTO) {
+        Player player1 = PlayerPersistenceService.findOrSave(player1DTO);
+        Player player2 = PlayerPersistenceService.findOrSave(player2DTO);
 
+        MatchScoreDTO matchScoreDTO = MatchScoreDTO.builder().
+                player1(MappingUtil.convertToDTO(player1)).
+                player2(MappingUtil.convertToDTO(player2)).
+                build();
 
-    //принимает 2 пустых ДТО player и добавляет новый матчScore в мапу, нужно проверять есть ли
-    //матч с такими игроками в мапе
-    public void addNewMatchScoreDTO(PlayerScoreDTO player1, PlayerScoreDTO player2){
+        MatchScoreDTO reverseMatchScoreDTO = MatchScoreDTO.builder().
+                player1(MappingUtil.convertToDTO(player2)).
+                player2(MappingUtil.convertToDTO(player1)).
+                build();
+        Optional<UUID> keyOfMatch = mapMatchScore.entrySet().stream().
+                filter(entry -> entry.getValue().equals(matchScoreDTO) || entry.getValue().equals(reverseMatchScoreDTO))
+                .map(Map.Entry::getKey)
+                .findFirst();
 
+        if (keyOfMatch.isPresent()) {
+            return keyOfMatch.get();
+        } else {
+            UUID uuid = UUID.randomUUID();
+            mapMatchScore.put(uuid, matchScoreDTO);
+            return uuid;
+        }
     }
+
     //удаляем матч с мапы
-    public void removeMatchScoreDTO(UUID uuid){
+    public void removeMatchScoreDTO(UUID uuid) {
+        mapMatchScore.remove(uuid);
     }
 
-    public MatchScoreDTO getMatchScoreDTO(UUID uuid){
-return null;
+    public MatchScoreDTO getMatchScoreDTO(UUID uuid) {
+        return mapMatchScore.get(uuid);
     }
 }
