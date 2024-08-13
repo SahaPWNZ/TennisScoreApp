@@ -11,8 +11,8 @@
 <header>
     <nav>
         <ul>
-            <li><a href="#">Домашняя страница</a></li>
-            <li><a href="#">Все матчи</a></li>
+            <li><a href="main.jsp">Домашняя страница</a></li>
+            <li><a href="matches.jsp">Все матчи</a></li>
         </ul>
     </nav>
 </header>
@@ -42,11 +42,11 @@
 
 <footer>
     <div class="footer-links">
-        <a href="#">
-            <img src="logo1.png" alt="Логотип 1">
+        <a href="https://t.me/sahapwnz">
+            <img src="css/resources/free-icon-telegram-2111646.png" width="45px" height="45px" alt="Логотип tg">
         </a>
-        <a href="#">
-            <img src="logo2.png" alt="Логотип 2">
+        <a href="https://github.com/SahaPWNZ">
+            <img src="css/resources/free-icon-git-logo-52040.png" width="45px" height="45px" alt="Логотип git">
         </a>
     </div>
 </footer>

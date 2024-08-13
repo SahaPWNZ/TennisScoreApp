@@ -15,6 +15,7 @@ import java.util.UUID;
 @WebServlet("/match-score")
 public class MatchScoreServlet extends HttpServlet {
     private final OngoingMatchesService ongoingMatchesService = new OngoingMatchesService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
@@ -29,6 +30,14 @@ public class MatchScoreServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        UUID uuid = UUID.fromString(req.getParameter("uuid"));
+        Long id = Long.parseLong(req.getParameter("playerId"));
 
+        MatchScoreDTO matchScoreDTO = ongoingMatchesService.getMatchScoreDTO(uuid);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, id);
+
+        //проверка на победу
+
+        resp.sendRedirect("/match-score?uuid="+uuid);
     }
 }

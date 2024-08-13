@@ -33,8 +33,8 @@
 </div>
 <footer>
     <div class="block-footer">
-        <a><img class="logo" width="45px" height="45px" src="css/resources/free-icon-telegram-2111646.png"></a>
-        <a><img class="logo" width="45px" height="45px" src="css/resources/free-icon-git-logo-52040.png"></a>
+        <a href="https://t.me/sahapwnz"><img class="logo" width="45px" height="45px" src="css/resources/free-icon-telegram-2111646.png"></a>
+        <a href="https://github.com/SahaPWNZ"><img class="logo" width="45px" height="45px" src="css/resources/free-icon-git-logo-52040.png"></a>
     </div>
 </footer>
 </body>

@@ -4,24 +4,24 @@ import com.sahapwnz.tennisscoreapp.dto.MatchScoreDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
 
 public class MatchScoreCalculationService {
-    private void clearPlayersPoints(PlayerScoreDTO player1, PlayerScoreDTO player2) {
+    private static void clearPlayersPoints(PlayerScoreDTO player1, PlayerScoreDTO player2) {
         player1.setPoint(0);
         player2.setPoint(0);
     }
 
-    private void clearPlayersGames(PlayerScoreDTO player1, PlayerScoreDTO player2) {
+    private static void clearPlayersGames(PlayerScoreDTO player1, PlayerScoreDTO player2) {
         player1.setGame(0);
         player2.setGame(0);
     }
 
-    public void winOnePoint(MatchScoreDTO matchScoreDTO, Long id) {
+    public static void winOnePoint(MatchScoreDTO matchScoreDTO, Long id) {
         PlayerScoreDTO playerWinner = matchScoreDTO.getPlayerScoreDTOonId(id);
         playerWinner.wonPoint();
         checkGame(playerWinner, matchScoreDTO.getOponnentPlayerScoreDTO(playerWinner));
     }
 
 
-    private void checkGame(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
+    private static void checkGame(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
         if (playerWinner.getGame() == 6 && opponent.getGame() == 6) {
 
             playTieBreak(playerWinner, opponent);
@@ -38,12 +38,12 @@ public class MatchScoreCalculationService {
             playerWinner.wonGame();
             clearPlayersPoints(playerWinner, opponent);
             checkSet(playerWinner, opponent);
-//
         }
     }
 
-    private void checkSet(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
-        if (playerWinner.getGame() == 6 && opponent.getGame() <= 4) {
+    private static void checkSet(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
+        if (playerWinner.getGame() == 6 && opponent.getGame() <= 4 ||
+                playerWinner.getGame() == 7 && opponent.getGame() <= 5) {
             playerWinner.wonSet();
             clearPlayersPoints(playerWinner, opponent);
             clearPlayersGames(playerWinner, opponent);
@@ -51,20 +51,16 @@ public class MatchScoreCalculationService {
         }
     }
 
-    private void playTieBreak(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
+    private static void playTieBreak(PlayerScoreDTO playerWinner, PlayerScoreDTO opponent) {
         if (playerWinner.getPoint() >= 7 && (playerWinner.getPoint() - opponent.getPoint()) >= 2) {
             playerWinner.wonSet();
             clearPlayersPoints(playerWinner, opponent);
             clearPlayersGames(playerWinner, opponent);
             checkWinnerMatch(playerWinner);
         }
-//        else {
-//            playerWinner.wonGame();
-//            clearPlayersPoints(playerWinner, opponent);
-//        }
     }
 
-    private void checkWinnerMatch(PlayerScoreDTO playerWinner) {
+    private static void checkWinnerMatch(PlayerScoreDTO playerWinner) {
         if (playerWinner.getSet() == 2) {
             System.out.println("Игрок с id: " + playerWinner.getId() + " ПОбедил");//вызов метода о завершении матча
         }
