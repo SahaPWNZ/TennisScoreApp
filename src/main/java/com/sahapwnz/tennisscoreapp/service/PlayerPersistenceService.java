@@ -8,9 +8,11 @@ import com.sahapwnz.tennisscoreapp.util.MappingUtil;
 import java.util.Optional;
 
 public class PlayerPersistenceService {
+
     private static final PlayerDAO playerDAO = new PlayerDAO();
     public static Player findOrSave(PlayerRequestDTO playerDTO) {
         Optional<Player> optionalPlayer = playerDAO.findByName(playerDTO.getName());
+
         if (optionalPlayer.equals(Optional.empty())){
             return playerDAO.save(MappingUtil.convertToEntityPlayer(playerDTO));
         }

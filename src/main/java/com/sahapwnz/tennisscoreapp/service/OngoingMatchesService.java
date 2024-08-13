@@ -2,7 +2,6 @@ package com.sahapwnz.tennisscoreapp.service;
 
 import com.sahapwnz.tennisscoreapp.dto.MatchScoreDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerRequestDTO;
-import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
 import com.sahapwnz.tennisscoreapp.entity.Player;
 import com.sahapwnz.tennisscoreapp.util.MappingUtil;
 
@@ -24,11 +23,11 @@ public class OngoingMatchesService {
                 player1(MappingUtil.convertToDTO(player1)).
                 player2(MappingUtil.convertToDTO(player2)).
                 build();
-
         MatchScoreDTO reverseMatchScoreDTO = MatchScoreDTO.builder().
                 player1(MappingUtil.convertToDTO(player2)).
                 player2(MappingUtil.convertToDTO(player1)).
                 build();
+
         Optional<UUID> keyOfMatch = mapMatchScore.entrySet().stream().
                 filter(entry -> entry.getValue().equals(matchScoreDTO) || entry.getValue().equals(reverseMatchScoreDTO))
                 .map(Map.Entry::getKey)
@@ -43,7 +42,6 @@ public class OngoingMatchesService {
         }
     }
 
-    //удаляем матч с мапы
     public void removeMatchScoreDTO(UUID uuid) {
         mapMatchScore.remove(uuid);
     }

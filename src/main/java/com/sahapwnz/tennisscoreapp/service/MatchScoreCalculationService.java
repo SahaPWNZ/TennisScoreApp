@@ -26,7 +26,7 @@ public class MatchScoreCalculationService {
 
             playTieBreak(playerWinner, opponent);
 
-        } else if (playerWinner.getPoint() >= 4 && opponent.getPoint() >= 4) {
+        } else if (playerWinner.getPoint() >= 4 && opponent.getPoint() >= 3) {
             if (playerWinner.getPoint() - opponent.getPoint() == 2) {
 
                 playerWinner.wonGame();

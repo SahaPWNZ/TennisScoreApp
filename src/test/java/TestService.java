@@ -1,19 +1,16 @@
 import com.sahapwnz.tennisscoreapp.dto.MatchScoreDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
 import com.sahapwnz.tennisscoreapp.service.MatchScoreCalculationService;
-import com.sahapwnz.tennisscoreapp.service.OngoingMatchesService;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestService {
-    static private OngoingMatchesService ongoingMatchesService = new OngoingMatchesService();
 
-    static private MatchScoreCalculationService calculationService = new MatchScoreCalculationService();
-    static private PlayerScoreDTO player1 = new PlayerScoreDTO(1L);
-    static private PlayerScoreDTO player2 = new PlayerScoreDTO(2L);
-    static private MatchScoreDTO matchScoreDTO = new MatchScoreDTO(player1, player2);
+    static private final PlayerScoreDTO player1 = new PlayerScoreDTO(1L);
+    static private final PlayerScoreDTO player2 = new PlayerScoreDTO(2L);
+    static private final MatchScoreDTO matchScoreDTO = new MatchScoreDTO(player1, player2);
 
     public void printTennisScore() {
         System.out.println("Player1: set = " + player1.getSet() + " game = " + player1.getGame() + " points = " + player1.getPoint());
@@ -37,7 +34,7 @@ public class TestService {
     public void checkMatchScoreCalculationService() {
         player1.setPoint(3);
         player1.setGame(5);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 1L);
 
         assertEquals(player1.getSet(), 1);
     }
@@ -50,14 +47,14 @@ public class TestService {
         player1.setSet(1);
         player2.setGame(5);
         player2.setPoint(3);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 2L);
 
         assertEquals(player1.getSet(), 1);
         player1.setPoint(4);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 1L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 1L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 1L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 2L);
 
         assertEquals(player1.getSet(), 2);
     }
@@ -67,14 +64,14 @@ public class TestService {
     public void checkMoreORLessPoints() {
         player1.setPoint(2);
         player2.setPoint(2);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        calculationService.winOnePoint(matchScoreDTO, 1L);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
-        calculationService.winOnePoint(matchScoreDTO, 2L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 1L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 2L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 1L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 2L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 1L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 2L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 2L);
+        MatchScoreCalculationService.winOnePoint(matchScoreDTO, 2L);
 
         assertEquals(player2.getGame(), 1);
     }
