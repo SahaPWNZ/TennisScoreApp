@@ -47,7 +47,6 @@ public class MatchScoreCalculationService {
             playerWinner.wonSet();
             clearPlayersPoints(playerWinner, opponent);
             clearPlayersGames(playerWinner, opponent);
-            checkWinnerMatch(playerWinner);
         }
     }
 
@@ -56,15 +55,7 @@ public class MatchScoreCalculationService {
             playerWinner.wonSet();
             clearPlayersPoints(playerWinner, opponent);
             clearPlayersGames(playerWinner, opponent);
-            checkWinnerMatch(playerWinner);
         }
     }
-
-    private static void checkWinnerMatch(PlayerScoreDTO playerWinner) {
-        if (playerWinner.getSet() == 2) {
-            System.out.println("Игрок с id: " + playerWinner.getId() + " ПОбедил");//вызов метода о завершении матча
-        }
-    }
-
 }
 

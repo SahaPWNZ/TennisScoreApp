@@ -1,0 +1,22 @@
+.match-info {
+    display: flex;
+    flex-direction: column; /* Выравнивание элементов по вертикали */
+    justify-content: center; /* Центрирование по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+    /*height: 100vh; !* Заполнить всю высоту окна *!*/
+    /*width: 100%; !* Заполнить всю ширину окна *!*/
+    margin: 50px; /* Отступы вокруг блока */
+    padding: 20px; /* Внутренние отступы */
+    border: 1px solid #ccc; /* Рамка вокруг блока */
+    /*border-radius: 10px; !* Закругление углов *!*/
+    background-color: #f9f9f9; /* Цвет фона */
+}
+
+.match-info h1 {
+    color: #333; /* Цвет заголовка */
+}
+
+.match-info p {
+    font-size: 18px; /* Размер шрифта для параграфов */
+    color: #555; /* Цвет текста */
+}

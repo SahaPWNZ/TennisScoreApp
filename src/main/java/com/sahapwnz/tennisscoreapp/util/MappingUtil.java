@@ -1,5 +1,6 @@
 package com.sahapwnz.tennisscoreapp.util;
 
+import com.sahapwnz.tennisscoreapp.dto.MatchResponceDTO;
 import com.sahapwnz.tennisscoreapp.dto.MatchScoreDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerRequestDTO;
 import com.sahapwnz.tennisscoreapp.dto.PlayerScoreDTO;
@@ -14,18 +15,15 @@ public class MappingUtil {
 
     static {
         MODEL_MAPPER = new ModelMapper();
-
-//        MODEL_MAPPER.typeMap(Player.class, PlayerScoreDTO.class)
-//                .addMapping(Player::getId, PlayerScoreDTO::setId);
-//
-//        MODEL_MAPPER.typeMap(PlayerScoreDTO.class, Player.class)
-//                .addMapping(PlayerScoreDTO::getId, Player::setId)
-//                .addMapping(PlayerScoreDTO::getName, Player::setName);
-
-
     }
 
-
+    public static MatchResponceDTO mapMatchToMatchResponse(Match match) {
+        MatchResponceDTO matchResponse = MODEL_MAPPER.map(match, MatchResponceDTO.class);
+        matchResponse.setPlayer1Name(match.getPlayer1().getName());
+        matchResponse.setPlayer2Name(match.getPlayer2().getName());
+        matchResponse.setWinnerName(match.getWinnerPlayer().getName());
+        return matchResponse;
+    }
     public static Match convertToEntityMatch(MatchScoreDTO matchScoreDTO) {
         Player player1 = convertToEntityPlayer(matchScoreDTO.getPlayer1());
         Player player2 = convertToEntityPlayer(matchScoreDTO.getPlayer2());
