@@ -31,9 +31,9 @@
 </div>
 <footer>
     <div class="block-footer">
-        <a href="https://t.me/sahapwnz"><img class="logo" width="45px" height="45px"
+        <a href="https://t.me/sahapwnz"><img alt="logo" class="logo" width="45px" height="45px"
                                              src="css/resources/free-icon-telegram-2111646.png"></a>
-        <a href="https://github.com/SahaPWNZ"><img class="logo" width="45px" height="45px"
+        <a href="https://github.com/SahaPWNZ"><img alt="logo" class="logo" width="45px" height="45px"
                                                    src="css/resources/free-icon-git-logo-52040.png"></a>
     </div>
 </footer>
