@@ -6,35 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/mainStyles.css">
     <title>Main</title>
 </head>
 <body>
 <div class="top-block">
-        <div class="top-block-with-title">
-            <h1 class="project-title">Tennis Scoreboard Project</h1>
-        </div>
+    <div class="top-block-with-title">
+        <h1 class="project-title">Tennis Scoreboard Project</h1>
+    </div>
 </div>
-
 <div class="block-with-button">
     <div class="button-block">
         <a href="new-match">
-            <button class = "bt" >Начать новый матч</button>
+            <button class="bt">Начать новый матч</button>
         </a>
     </div>
     <div class="button-block">
-        <a href="matches.jsp">
-            <button class = "bt" >Звершённые матчи</button>
+        <a href="matches">
+            <button class="bt">Звершённые матчи</button>
         </a>
-
     </div>
-
 </div>
 <footer>
     <div class="block-footer">
-        <a href="https://t.me/sahapwnz"><img class="logo" width="45px" height="45px" src="css/resources/free-icon-telegram-2111646.png"></a>
-        <a href="https://github.com/SahaPWNZ"><img class="logo" width="45px" height="45px" src="css/resources/free-icon-git-logo-52040.png"></a>
+        <a href="https://t.me/sahapwnz"><img class="logo" width="45px" height="45px"
+                                             src="css/resources/free-icon-telegram-2111646.png"></a>
+        <a href="https://github.com/SahaPWNZ"><img class="logo" width="45px" height="45px"
+                                                   src="css/resources/free-icon-git-logo-52040.png"></a>
     </div>
 </footer>
 </body>

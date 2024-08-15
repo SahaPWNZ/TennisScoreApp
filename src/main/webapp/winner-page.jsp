@@ -1,13 +1,10 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.sahapwnz.tennisscoreapp.dto.MatchResponceDTO" %>
-<%--<%--%>
-<%--    MatchResponceDTO matchDTO = (MatchResponceDTO) request.getAttribute("MatchDTO");--%>
-<%--    %>--%>
+
 <%
     MatchResponceDTO matchDTO = (MatchResponceDTO) session.getAttribute("MatchDTO");
     session.invalidate();
-    %>
+%>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,9 +24,12 @@
 <main>
     <div class="match-info">
         <h1>Матч Завершён</h1>
-        <p>Игрок 1: <strong><%= matchDTO.getPlayer1Name() %></strong></p>
-        <p>Игрок 2: <strong><%= matchDTO.getPlayer2Name() %></strong></p>
-        <p>Победитель: <strong><%= matchDTO.getWinnerName() %></strong></p>
+        <p>Игрок 1: <strong><%= matchDTO.getPlayer1Name() %>
+        </strong></p>
+        <p>Игрок 2: <strong><%= matchDTO.getPlayer2Name() %>
+        </strong></p>
+        <p>Победитель: <strong><%= matchDTO.getWinnerName() %>
+        </strong></p>
 
     </div>
 </main>

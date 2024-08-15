@@ -1,26 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.sahapwnz.tennisscoreapp.entity.Match" %>
-<%@ page import="com.sahapwnz.tennisscoreapp.dao.MatchDAO" %>
+<%@ page import="com.sahapwnz.tennisscoreapp.dto.MatchResponceDTO" %>
+
 <%
-    String playerName = request.getParameter("filter_by_player_name");
-    String pageParam = request.getParameter("page");
-    int pageNumber = (pageParam != null) ? Integer.parseInt(pageParam) : 1;
-
-    MatchService matchService = new MatchService();
-    List<Match> matches;
-    int totalMatches;
-    int totalPages;
-
-    if (playerName != null && !playerName.isEmpty()) {
-        matches = matchService.getMatchesByPlayerName(playerName, pageNumber);
-        totalMatches = matchService.getTotalMatchesByPlayerName(playerName);
-    } else {
-        matches = matchService.getAllMatches(pageNumber);
-        totalMatches = matchService.getTotalMatches();
-    }
-
-    totalPages = (int) Math.ceil((double) totalMatches / 10); // Предположим, что на странице 10 матчей
+    String playerName = (String)session.getAttribute("playerName");
+    List<MatchResponceDTO> matches = (List<MatchResponceDTO>) session.getAttribute("matches");
+    int pageNumber = (int) session.getAttribute("pageNumber");
+    int totalPages = (int) session.getAttribute("totalPage");
+    session.invalidate();
 %>
 <!DOCTYPE html>
 <html lang="ru">
@@ -28,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сыгранные матчи</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="">
 </head>
 <body>
 <header>
@@ -53,19 +40,17 @@
         <tr>
             <th>Игрок 1</th>
             <th>Игрок 2</th>
-            <th>Счет</th>
-            <th>Дата</th>
+            <th>Победитель</th>
         </tr>
         </thead>
         <tbody>
         <%
-            for (Match match : matches) {
+            for (MatchResponceDTO match : matches) {
         %>
         <tr>
-            <td><%= match.getPlayer1().getName() %></td>
-            <td><%= match.getPlayer2().getName() %></td>
-            <td><%= match.getScore() %></td>
-            <td><%= match.getDate() %></td>
+            <td><%= match.getPlayer1Name() %></td>
+            <td><%= match.getPlayer2Name() %></td>
+            <td><%= match.getWinnerName() %></td>
         </tr>
         <%
             }
