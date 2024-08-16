@@ -1,22 +1,98 @@
+body {
+    background-image: url("resources/sportmaster-tennisnyi-miach-5.webp");
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Open Sans", sans-serif;
+}
+
+header {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+nav {
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin: 0 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #73fc03;
+    /*color: inherit;*/
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Тень для глубины */
+
+    font-size: 1.2rem;
+    padding: 10px;
+    transition: background-color 0.4s ease;
+}
+
+nav a:hover {
+    font-weight: bold;
+    background-color: rgba(173, 252, 3, 0.2);
+}
+
+main {
+    height: 70%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .match-info {
     display: flex;
     flex-direction: column; /* Выравнивание элементов по вертикали */
     justify-content: center; /* Центрирование по горизонтали */
     align-items: center; /* Центрирование по вертикали */
     /*height: 100vh; !* Заполнить всю высоту окна *!*/
-    /*width: 100%; !* Заполнить всю ширину окна *!*/
-    margin: 50px; /* Отступы вокруг блока */
+    width: 500px;
+    margin: 30px; /* Отступы вокруг блока */
     padding: 20px; /* Внутренние отступы */
     border: 1px solid #ccc; /* Рамка вокруг блока */
-    /*border-radius: 10px; !* Закругление углов *!*/
-    background-color: #f9f9f9; /* Цвет фона */
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .match-info h1 {
     color: #333; /* Цвет заголовка */
 }
-
 .match-info p {
     font-size: 18px; /* Размер шрифта для параграфов */
-    color: #555; /* Цвет текста */
+}
+
+.winner-name {
+color: #99e310;
+}
+footer {
+    height: 15%;
+    box-sizing: border-box;
+}
+
+.footer-links {
+    margin-left: 15px;
+    display: flex;
+    justify-content: flex-start; /* Ссылки выравниваются влево */
+}
+
+.footer-links a {
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

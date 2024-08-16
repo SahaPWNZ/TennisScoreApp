@@ -30,11 +30,13 @@
     </div>
 </div>
 <footer>
-    <div class="block-footer">
-        <a href="https://t.me/sahapwnz"><img alt="logo" class="logo" width="45px" height="45px"
-                                             src="css/resources/free-icon-telegram-2111646.png"></a>
-        <a href="https://github.com/SahaPWNZ"><img alt="logo" class="logo" width="45px" height="45px"
-                                                   src="css/resources/free-icon-git-logo-52040.png"></a>
+    <div class="footer-links">
+        <a href="https://t.me/sahapwnz">
+            <img src="css/resources/free-icon-telegram-2111646.png" width="45px" height="45px" alt="Логотип tg">
+        </a>
+        <a href="https://github.com/SahaPWNZ">
+            <img src="css/resources/free-icon-git-logo-52040.png" width="45px" height="45px" alt="Логотип git">
+        </a>
     </div>
 </footer>
 </body>

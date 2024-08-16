@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("resources/sportmaster-tennisnyi-miach-5.webp");
     margin: 0;
     padding: 0;
@@ -10,11 +10,12 @@ body{
     font-family: "Open Sans", sans-serif;
 }
 
-.block-with-button{
+.block-with-button {
     height: 60%;
     border-width: 50px;
 }
-.button-block{
+
+.button-block {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,6 +23,7 @@ body{
     margin-top: 30px;
     box-sizing: border-box; /* Включаем размер границы в общий размер элемента */
 }
+
 button {
     font-size: 1.5rem; /* Размер шрифта */
     padding: 2rem 3rem;
@@ -31,9 +33,11 @@ button {
     color: white;
     cursor: pointer;
 }
+
 .bt {
     font-family: "Open Sans", sans-serif;
 }
+
 .top-block {
     height: 20%;
     display: flex;
@@ -41,21 +45,30 @@ button {
     width: 100%;
 }
 
-
-.block-footer {
-    align-items: center;
-    width: 15%;
-    border-width: 2px;
-    box-sizing: border-box;
-    margin-left: 20px;
-}
-
 .top-block-with-title {
     margin: 0px auto;
 }
+
 .project-title {
     text-align: center;
     font-size: 2rem; /* Размер шрифта */
     color: #adfc03; /* Цвет шрифта */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Тень для глубины */
+}
+
+footer {
+    height: 15%;
+    box-sizing: border-box;
+}
+
+.footer-links {
+    margin-left: 15px;
+    display: flex;
+    justify-content: flex-start; /* Ссылки выравниваются влево */
+}
+
+.footer-links a {
+    margin-right: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }

@@ -26,8 +26,10 @@ public class MatchScoreServlet extends HttpServlet {
         UUID uuid = UUID.fromString(req.getParameter("uuid"));
 
         MatchScoreDTO matchScoreDTO = ongoingMatchesService.getMatchScoreDTO(uuid);
+
         System.out.println(matchScoreDTO);
         System.out.println(uuid);
+
         req.setAttribute("match", matchScoreDTO);
         req.setAttribute("uuid", uuid);
         req.getRequestDispatcher("/match-score.jsp").forward(req, resp);

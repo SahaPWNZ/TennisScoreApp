@@ -29,7 +29,7 @@
             <div class="form-player">
                 <h2>Игрок 1</h2>
                 <input type="text" placeholder="Введите имя игрока"
-                       id="playerOne" name="playerOne">>
+                       id="playerOne" name="playerOne">
             </div>
 
             <div class="form-player">

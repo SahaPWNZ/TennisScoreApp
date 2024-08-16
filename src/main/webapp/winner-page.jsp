@@ -28,9 +28,8 @@
         </strong></p>
         <p>Игрок 2: <strong><%= matchDTO.getPlayer2Name() %>
         </strong></p>
-        <p>Победитель: <strong><%= matchDTO.getWinnerName() %>
+        <p class="winner-name">Победитель: <strong><%= matchDTO.getWinnerName() %>
         </strong></p>
-
     </div>
 </main>
 
