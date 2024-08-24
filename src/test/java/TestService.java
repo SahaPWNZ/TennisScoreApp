@@ -5,18 +5,12 @@ import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TestService {
 
     static private final PlayerScoreDTO player1 = new PlayerScoreDTO(1L);
     static private final PlayerScoreDTO player2 = new PlayerScoreDTO(2L);
     static private final MatchScoreDTO matchScoreDTO = new MatchScoreDTO(player1, player2);
 
-    public void printTennisScore() {
-        System.out.println("Player1: set = " + player1.getSet() + " game = " + player1.getGame() + " points = " + player1.getPoint());
-        System.out.println("Player2: set = " + player2.getSet() + " game = " + player2.getGame() + " points = " + player2.getPoint());
-        System.out.println("--------------------------------------------------");
-    }
 
     @BeforeEach
     public void clearAllPlayerPoints() {
@@ -29,7 +23,6 @@ public class TestService {
     }
 
     @Test
-//@Order(1)
     @DisplayName("Игрок первый забирает Победу в сете при стартовом счёте 5-0 по геймам")
     public void checkMatchScoreCalculationService() {
         player1.setPoint(3);

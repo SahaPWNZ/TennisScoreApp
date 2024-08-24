@@ -2,6 +2,7 @@ import com.sahapwnz.tennisscoreapp.dao.MatchDAO;
 import com.sahapwnz.tennisscoreapp.dao.PlayerDAO;
 import com.sahapwnz.tennisscoreapp.entity.Match;
 import com.sahapwnz.tennisscoreapp.entity.Player;
+import com.sahapwnz.tennisscoreapp.exceptions.DataBaseException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -45,21 +46,6 @@ public class TestDataBaseRunner {
 
             System.out.println(session.get(Player.class, 1));
             System.out.println(session.get(Match.class, 1));
-//            List<Match> matches2 = session.createQuery("select m from Match m", Match.class).list();
-//            List<Match> matches = session.createQuery("from Match", Match.class).list();
-//            CriteriaBuilder cb = session.getCriteriaBuilder();
-//            CriteriaQuery<Match> criteriaQuery = cb.createQuery(Match.class);
-//            Root<Match> root = criteriaQuery.from(Match.class);
-//            criteriaQuery.select(root);
-//            List<Match> result = session.createQuery(criteriaQuery).getResultList();
-
-//            for (Match match : matches2) {
-//                System.out.println("Match ID: " + match.getId());
-//                System.out.println("Player1: " + match.getPlayer1());
-//                System.out.println("Player1: " + match.getPlayer2());
-//                System.out.println("-----------------------");
-//            }
-//            session.getTransaction().commit();
         }
 
     }
@@ -136,7 +122,7 @@ public class TestDataBaseRunner {
     @Test
     public void testPlayerDAOsave_Exception(){
         Player player = Player.builder().name("TEST").build();
-        assertThrows(ConstraintViolationException.class, ()->
+        assertThrows(DataBaseException.class, ()->
                 playerDAO.save(player));
 
     }

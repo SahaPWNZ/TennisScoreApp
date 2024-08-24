@@ -1,7 +1,8 @@
 package com.sahapwnz.tennisscoreapp.dao;
 
-import com.sahapwnz.tennisscoreapp.entity.Match;
 import com.sahapwnz.tennisscoreapp.entity.Player;
+import com.sahapwnz.tennisscoreapp.exceptions.DataBaseException;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -23,6 +24,10 @@ public class PlayerDAO extends BaseDAO<Player> {
             return session.createQuery("select p from Player p", Player.class).list();
 
         }
+        catch (HibernateException e){
+            System.out.println(e.getMessage());
+            throw new DataBaseException("Error when working with a database");
+        }
     }
 
     @Override
@@ -30,14 +35,22 @@ public class PlayerDAO extends BaseDAO<Player> {
         try (Session session = sessionFactory.openSession()) {
             return Optional.ofNullable(session.get(Player.class, id));
         }
+        catch (HibernateException e){
+            System.out.println(e.getMessage());
+            throw new DataBaseException("Error when working with a database");
+        }
     }
 
-    public Optional<Player> findByName(String name){
-        try(Session session = sessionFactory.openSession()){
+    public Optional<Player> findByName(String name) {
+        try (Session session = sessionFactory.openSession()) {
 
             return Optional.ofNullable(session.createQuery("select p from Player p where p.name =:name", Player.class)
                     .setParameter("name", name)
                     .uniqueResult());
+        }
+        catch (HibernateException e){
+            System.out.println(e.getMessage());
+            throw new DataBaseException("Error when working with a database");
         }
     }
 
@@ -52,18 +65,12 @@ public class PlayerDAO extends BaseDAO<Player> {
 
             return entity;
         }
+        catch (HibernateException e){
+            System.out.println(e.getMessage());
+            throw new DataBaseException("Error when working with a database");
+        }
     }
 
-//    @Override
-//    public void update(Player entity) {
-//        try (Session session = sessionFactory.openSession()) {
-//            session.beginTransaction();
-//
-//            session.merge(entity);
-//
-//            session.getTransaction().commit();
-//        }
-//    }
 
     @Override
     public void delete(Long id) {
@@ -74,10 +81,12 @@ public class PlayerDAO extends BaseDAO<Player> {
             if (match != null) {
                 session.remove(match);
             }
-//            session.remove(id);
-//            session.flush();
 
             session.getTransaction().commit();
+        }
+        catch (HibernateException e){
+            System.out.println(e.getMessage());
+            throw new DataBaseException("Error when working with a database");
         }
     }
 }

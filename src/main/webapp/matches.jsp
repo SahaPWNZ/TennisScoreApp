@@ -3,7 +3,7 @@
 <%@ page import="com.sahapwnz.tennisscoreapp.dto.MatchResponceDTO" %>
 
 <%
-    String playerName = (String)session.getAttribute("playerName");
+    String playerName = (String) session.getAttribute("playerName");
     List<MatchResponceDTO> matches = (List<MatchResponceDTO>) session.getAttribute("matches");
     int pageNumber = (int) session.getAttribute("pageNumber");
     int totalPages = (int) session.getAttribute("totalPage");
@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Сыгранные матчи</title>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/matches.css">
 </head>
 <body>
 <header>
@@ -28,19 +28,21 @@
 </header>
 
 <main>
-    <h1>Сыгранные матчи</h1>
+    <h1 class="page-title">Сыгранные матчи</h1>
+<div class="form-container"> <form action="/matches" method="get" >
+    <input type="text" name="filter_by_player_name" placeholder="Имя игрока"
+           value="<%= playerName != null ? playerName : "" %>">
+    <button type="submit">Искать</button>
+</form></div>
 
-    <form action="/matches" method="get">
-        <input type="text" name="filter_by_player_name" placeholder="Имя игрока" value="<%= playerName != null ? playerName : "" %>">
-        <button type="submit">Искать</button>
-    </form>
 
+    <div class="match-table">
     <table>
         <thead>
         <tr>
-            <th>Игрок 1</th>
-            <th>Игрок 2</th>
-            <th>Победитель</th>
+            <th><b>Игрок 1</b></th>
+            <th><b>Игрок 2</b></th>
+            <th><b>Победитель</b></th>
         </tr>
         </thead>
         <tbody>
@@ -48,23 +50,32 @@
             for (MatchResponceDTO match : matches) {
         %>
         <tr>
-            <td><%= match.getPlayer1Name() %></td>
-            <td><%= match.getPlayer2Name() %></td>
-            <td><%= match.getWinnerName() %></td>
+            <td><%= match.getPlayer1Name() %>
+            </td>
+            <td><%= match.getPlayer2Name() %>
+            </td>
+            <td><%= match.getWinnerName() %>
+            </td>
         </tr>
         <%
             }
         %>
         </tbody>
     </table>
-
+    </div>
     <div class="pagination">
         <%
             if (totalPages > 1) {
                 for (int i = 1; i <= totalPages; i++) {
+                    if (i == pageNumber) { // Проверка на текущую страницу
+        %>
+        <a href="/matches?page=<%= i %>&filter_by_player_name=<%= playerName != null ? playerName : "" %>" class="active"><%= i %></a>
+        <%
+        } else {
         %>
         <a href="/matches?page=<%= i %>&filter_by_player_name=<%= playerName != null ? playerName : "" %>"><%= i %></a>
         <%
+                    }
                 }
             }
         %>

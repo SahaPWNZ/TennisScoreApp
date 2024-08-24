@@ -39,7 +39,7 @@ public class NewMatchServlet extends HttpServlet {
                 name(req.getParameter("playerTwo")).
                 build();
 
-        ValidationUtil.nameValidation(playerOneDTO, playerTwoDTO);
+        ValidationUtil.namesValidation(playerOneDTO, playerTwoDTO);
 
         UUID uuid = ongoingMatchesService.addNewMatchScoreDTO(playerOneDTO, playerTwoDTO);
         resp.sendRedirect("/match-score?uuid=" + uuid);

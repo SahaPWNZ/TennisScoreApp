@@ -23,7 +23,6 @@ public class HibernateUtil {
         return new Configuration()
                 .addAnnotatedClass(Player.class)
                 .addAnnotatedClass(Match.class)
-//                .setPhysicalNamingStrategy(new CamelCaseToUnderscoresNamingStrategy())
                 .configure();
     }
 }

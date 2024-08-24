@@ -33,7 +33,7 @@ public class MatchScoreCalculationService {
                 clearPlayersPoints(playerWinner, opponent);
                 checkSet(playerWinner, opponent);
             }
-        } else if (playerWinner.getPoint() == 4 && opponent.getPoint() < 3) {
+        } else if (playerWinner.getPoint() == 4) {
 
             playerWinner.wonGame();
             clearPlayersPoints(playerWinner, opponent);

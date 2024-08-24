@@ -23,6 +23,7 @@ public class MappingUtil {
         matchResponse.setPlayer1Name(match.getPlayer1().getName());
         matchResponse.setPlayer2Name(match.getPlayer2().getName());
         matchResponse.setWinnerName(match.getWinnerPlayer().getName());
+
         return matchResponse;
     }
 

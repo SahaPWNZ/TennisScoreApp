@@ -27,11 +27,9 @@ public class MatchScoreServlet extends HttpServlet {
 
         MatchScoreDTO matchScoreDTO = ongoingMatchesService.getMatchScoreDTO(uuid);
 
-        System.out.println(matchScoreDTO);
-        System.out.println(uuid);
-
         req.setAttribute("match", matchScoreDTO);
         req.setAttribute("uuid", uuid);
+
         req.getRequestDispatcher("/match-score.jsp").forward(req, resp);
     }
 
@@ -46,6 +44,7 @@ public class MatchScoreServlet extends HttpServlet {
         if (finishedMatchesPersistenceService.isMatchFinished(matchScoreDTO)) {
 
             Match entityMatch = finishedMatchesPersistenceService.persistFinishedMatch(matchScoreDTO);
+
             HttpSession session = req.getSession();
             session.setAttribute("MatchDTO", MappingUtil.convertMatchToMatchResponse(entityMatch));
             resp.sendRedirect("/winner-page.jsp");

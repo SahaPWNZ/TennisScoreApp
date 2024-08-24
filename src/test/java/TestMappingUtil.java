@@ -6,13 +6,10 @@ import com.sahapwnz.tennisscoreapp.util.MappingUtil;
 import org.junit.jupiter.api.Test;
 
 public class TestMappingUtil {
-    static private PlayerScoreDTO playerDTO = new PlayerScoreDTO(1L);
-    static private PlayerScoreDTO player2DTO = new PlayerScoreDTO(5L);
-    static private Player playerEntity = new Player(3L, "Vasy");
-    static private MatchScoreDTO matchScoreDTO = new MatchScoreDTO(playerDTO, player2DTO);
-    public static Player testPlayer1 = Player.builder().name("TEST").build();
-    public static Player testPlayer2 = Player.builder().name("TEST2").build();
-    public static Match testMatch1 = Match.builder().player1(testPlayer1).player2(testPlayer2).winnerPlayer(testPlayer1).build();
+    static private final PlayerScoreDTO playerDTO = new PlayerScoreDTO(1L);
+    static private final PlayerScoreDTO player2DTO = new PlayerScoreDTO(5L);
+    static private final Player playerEntity = new Player(3L, "Vasy");
+    static private final MatchScoreDTO matchScoreDTO = new MatchScoreDTO(playerDTO, player2DTO);
 
     @Test
     public void testMappingPlayer() {

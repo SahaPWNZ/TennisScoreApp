@@ -44,8 +44,7 @@ public class OngoingMatchesService {
 
     public void removeMatchScoreDTO(UUID uuid) {
         mapMatchScore.remove(uuid);
-        System.out.println("Матч с таким ююид удалён "+ uuid);
-        mapMatchScore.entrySet().stream().forEach(System.out::println);
+        System.out.println("Матч с таким UUID удалён " + uuid);
     }
 
     public MatchScoreDTO getMatchScoreDTO(UUID uuid) {
