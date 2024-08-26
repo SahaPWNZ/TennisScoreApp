@@ -28,5 +28,4 @@ public class MatchesServlet extends HttpServlet {
         req.getRequestDispatcher("/matches.jsp").forward(req, resp);
     }
 
-
 }
