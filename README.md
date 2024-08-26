@@ -54,10 +54,10 @@
 [//]: # (https://github.com/SahaPWNZ/imagesForGit/raw/main/imagesForGit/image/img.png)
 
 страница нового матча: позволяет добавить игроков в бд которых нет, и начать матч, также есть валидация на ввод имени только из латинских символов
-![img_1.png](../imagesForGit/image/img_1.png)
+![img_1.png](https://github.com/SahaPWNZ/imagesForGit/blob/main/image/img_1.png)
 
 страница текущего матча: функионал подсчёта очков, а также вызова страницы победителя когда кто-то из игроков набирает 3 победных сета
-![img_2.png](../imagesForGit/image/img_2.png)
+![img_2.png](https://github.com/SahaPWNZ/imagesForGit/blob/main/image/img_2.png)
 
 страница с завершёнными матчами: с реализованным поисском по имени и пагинацией страниц
-![img_3.png](../imagesForGit/image/img_3.png)
+![img_3.png](https://github.com/SahaPWNZ/imagesForGit/blob/main/image/img_3.png)
