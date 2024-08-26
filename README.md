@@ -48,8 +48,10 @@
 Деплой проекта: пока без деплоя( 
 
 стартовая страница: можно начать "новый матч" или посмотреть список завершённых матчей (которые загружаются из sql скрипта при старте проекта) 
-![img.png](https://github.com/SahaPWNZ/imagesForGit/raw/main/imagesForGit/image/img.png)
+![img.png](https://github.com/SahaPWNZ/imagesForGit/blob/main/image/img.png)
 
+
+[//]: # (https://github.com/SahaPWNZ/imagesForGit/raw/main/imagesForGit/image/img.png)
 
 страница нового матча: позволяет добавить игроков в бд которых нет, и начать матч, также есть валидация на ввод имени только из латинских символов
 ![img_1.png](../imagesForGit/image/img_1.png)
