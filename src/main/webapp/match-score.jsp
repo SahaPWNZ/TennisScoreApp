@@ -17,7 +17,7 @@
     <nav>
         <ul>
             <li><a href="main.jsp">Домашняя страница</a></li>
-            <li><a href="matches.jsp">Все матчи</a></li>
+            <li><a href="/matches">Все матчи</a></li>
         </ul>
     </nav>
 </header>
